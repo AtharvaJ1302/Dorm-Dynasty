@@ -2,6 +2,11 @@ import 'dart:ui';
 
 import 'package:dorm_dynasty/common/constants.dart';
 import 'package:dorm_dynasty/common/spacing.dart';
+import 'package:dorm_dynasty/features/admin/screens/create_staff_screen.dart';
+import 'package:dorm_dynasty/features/admin/screens/staff_display_screen.dart';
+import 'package:dorm_dynasty/features/home/screens/widgets/category_card.dart';
+import 'package:dorm_dynasty/features/student/screens/create_issue_screen.dart';
+import 'package:dorm_dynasty/features/student/screens/room_availability_screen.dart';
 import 'package:dorm_dynasty/theme/text_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -100,7 +105,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     widthSpacer(10),
                     Column(
                       children: [
-                        SvgPicture.asset(AppConstants.createIssue),
+                        InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        const StudentCreateIssue()),
+                              );
+                            },
+                            child: SvgPicture.asset(AppConstants.createIssue)),
                         Text(
                           "Create Issue",
                           style: TextStyle(
@@ -110,6 +124,92 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                   ],
                 ),
+              ),
+            ),
+            heightSpacer(30),
+            Container(
+              width: double.maxFinite,
+              color: Color(0xFFC8E6C9),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  heightSpacer(20),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      "Categories",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  heightSpacer(15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CategoryCard(
+                        category: 'Room\nAvailability',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) =>
+                                const RoomAvailabilityScreen()),
+                          );
+                        },
+                        image: AppConstants.roomAvailability,
+                      ),
+                      CategoryCard(
+                        category: 'All\nIssues',
+                        onTap: () {},
+                        image: AppConstants.allIssues,
+                      ),
+                      CategoryCard(
+                        category: 'Staff\nMembers',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) =>
+                                const StaffDisplayScreen()),
+                          );
+                        },
+                        image: AppConstants.staffMember,
+                      ),
+                    ],
+                  ),
+                  heightSpacer(20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CategoryCard(
+                        category: 'Create\nStaff',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) =>
+                                const CreateStaffScreen()),
+                          );
+                        },
+                        image: AppConstants.createStaff,
+                      ),
+                      CategoryCard(
+                        category: 'Hostel\nFees',
+                        onTap: () {},
+                        image: AppConstants.hostelFee,
+                      ),
+                      CategoryCard(
+                        category: 'Change\nRoom',
+                        onTap: () {},
+                        image: AppConstants.roomChange,
+                      ),
+                    ],
+                  ),
+                  heightSpacer(20),
+                ],
               ),
             ),
           ],

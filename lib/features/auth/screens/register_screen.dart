@@ -3,7 +3,6 @@ import 'package:dorm_dynasty/common/spacing.dart';
 import 'package:dorm_dynasty/features/auth/widgets/custom_button.dart';
 import 'package:dorm_dynasty/theme/colors.dart';
 import 'package:dorm_dynasty/theme/text_theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

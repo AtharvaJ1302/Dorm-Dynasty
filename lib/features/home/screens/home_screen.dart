@@ -3,9 +3,12 @@ import 'dart:ui';
 import 'package:dorm_dynasty/common/constants.dart';
 import 'package:dorm_dynasty/common/spacing.dart';
 import 'package:dorm_dynasty/features/admin/screens/create_staff_screen.dart';
+import 'package:dorm_dynasty/features/admin/screens/issue_screen.dart';
+import 'package:dorm_dynasty/features/admin/screens/room_change.dart';
 import 'package:dorm_dynasty/features/admin/screens/staff_display_screen.dart';
 import 'package:dorm_dynasty/features/home/screens/widgets/category_card.dart';
 import 'package:dorm_dynasty/features/student/screens/create_issue_screen.dart';
+import 'package:dorm_dynasty/features/student/screens/fee_payment.dart';
 import 'package:dorm_dynasty/features/student/screens/room_availability_screen.dart';
 import 'package:dorm_dynasty/theme/text_theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -163,7 +166,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       CategoryCard(
                         category: 'All\nIssues',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) =>
+                                const IssueScreen(),
+                            ),
+                          );
+                        },
                         image: AppConstants.allIssues,
                       ),
                       CategoryCard(
@@ -198,12 +209,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       CategoryCard(
                         category: 'Hostel\nFees',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) =>
+                              const FeePayment(),
+                            ),
+                          );
+                        },
                         image: AppConstants.hostelFee,
                       ),
                       CategoryCard(
                         category: 'Change\nRoom',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) =>
+                                const RoomChange(),
+                            ),
+                          );
+                        },
                         image: AppConstants.roomChange,
                       ),
                     ],

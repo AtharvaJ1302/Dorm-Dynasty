@@ -118,7 +118,7 @@ class _StaffDisplayScreenState extends State<StaffDisplayScreen> {
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               );

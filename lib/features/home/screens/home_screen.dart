@@ -10,6 +10,7 @@ import 'package:dorm_dynasty/features/home/screens/widgets/category_card.dart';
 import 'package:dorm_dynasty/features/student/screens/create_issue_screen.dart';
 import 'package:dorm_dynasty/features/student/screens/fee_payment.dart';
 import 'package:dorm_dynasty/features/student/screens/room_availability_screen.dart';
+import 'package:dorm_dynasty/features/student/screens/student_id_card.dart';
 import 'package:dorm_dynasty/theme/text_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -47,85 +48,87 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             heightSpacer(30),
-            Container(
-              height: 140.h,
-              width: double.maxFinite,
-              decoration: const ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      width: 2,
-                      color: Colors.black,
+            SingleChildScrollView(
+              child: Container(
+                height: 140.h,
+                width: double.maxFinite,
+                decoration: const ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 2,
+                        color: Colors.black,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                        bottomLeft: Radius.circular(30),
+                        bottomRight: Radius.circular(0),
+                      ),
                     ),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                      bottomLeft: Radius.circular(30),
-                      bottomRight: Radius.circular(0),
-                    ),
+                    shadows: [
+                      BoxShadow(
+                        color: Colors.black,
+                        blurRadius: 8,
+                        offset: Offset(2, 4),
+                        spreadRadius: 0,
+                      )
+                    ]),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Atharva Joshi",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black,
+                              fontSize: 24.sp,
+                            ),
+                          ),
+                          heightSpacer(15),
+                          Text(
+                            "Room No. : 101",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.sp,
+                            ),
+                          ),
+                          Text(
+                            "Block No. : A",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                      widthSpacer(10),
+                      Column(
+                        children: [
+                          InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) =>
+                                          const StudentCreateIssue()),
+                                );
+                              },
+                              child: SvgPicture.asset(AppConstants.createIssue)),
+                          Text(
+                            "Create Issue",
+                            style: TextStyle(
+                                fontSize: 16.sp, fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
-                  shadows: [
-                    BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 8,
-                      offset: Offset(2, 4),
-                      spreadRadius: 0,
-                    )
-                  ]),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Atharva Joshi",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black,
-                            fontSize: 24.sp,
-                          ),
-                        ),
-                        heightSpacer(15),
-                        Text(
-                          "Room No. : 101",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15.sp,
-                          ),
-                        ),
-                        Text(
-                          "Block No. : A",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                    widthSpacer(10),
-                    Column(
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) =>
-                                        const StudentCreateIssue()),
-                              );
-                            },
-                            child: SvgPicture.asset(AppConstants.createIssue)),
-                        Text(
-                          "Create Issue",
-                          style: TextStyle(
-                              fontSize: 16.sp, fontWeight: FontWeight.w700),
-                        ),
-                      ],
-                    )
-                  ],
                 ),
               ),
             ),
@@ -236,6 +239,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   heightSpacer(20),
+                  SingleChildScrollView(
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        CategoryCard(
+                          category: 'Change\nRoom',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) =>
+                                const RoomChange(),
+                              ),
+                            );
+                          },
+                          image: AppConstants.roomChange,
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -10,7 +10,6 @@ import 'package:dorm_dynasty/features/home/screens/widgets/category_card.dart';
 import 'package:dorm_dynasty/features/student/screens/create_issue_screen.dart';
 import 'package:dorm_dynasty/features/student/screens/fee_payment.dart';
 import 'package:dorm_dynasty/features/student/screens/room_availability_screen.dart';
-import 'package:dorm_dynasty/features/student/screens/student_id_card.dart';
 import 'package:dorm_dynasty/theme/text_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -239,25 +238,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   heightSpacer(20),
-                  SingleChildScrollView(
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CategoryCard(
-                          category: 'Change\nRoom',
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) =>
-                                const RoomChange(),
-                              ),
-                            );
-                          },
-                          image: AppConstants.roomChange,
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),

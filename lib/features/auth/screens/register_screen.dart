@@ -273,10 +273,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 heightSpacer(25),
                 CustomButton(
                     buttonText: 'Register',
-                    onTap: () {
-                      print(selectedBlock);
-                      print(selectedRoom);
-                      if (_formKey.currentState!.validate()) {}
+                    onTap: ()  {
 
                     }),
                 heightSpacer(10)

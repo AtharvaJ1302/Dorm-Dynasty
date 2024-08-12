@@ -1,3 +1,4 @@
+import 'package:dorm_dynasty/api/api_calls.dart';
 import 'package:dorm_dynasty/common/constants.dart';
 import 'package:dorm_dynasty/common/custom_text_field.dart';
 import 'package:dorm_dynasty/common/spacing.dart';
@@ -23,6 +24,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+
+  ApiCalls apiCall = ApiCalls();
 
   @override
   void dispose() {
@@ -105,15 +108,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   buttonText: 'Login',
                   Size: 16,
                   onTap: () {
-                    // if(_formKey.currentState!.validate()){
-                    //    print("Validate");
-                    // }
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) => const HomeScreen(),
-                      ),
-                    );
+                    if(_formKey.currentState!.validate()){
+                       print("Validate");
+                       apiCall.handleLogin(context, email.text, password.text);
+                    }
+                    // Navigator.push(
+                    //   context,
+                    //   CupertinoPageRoute(
+                    //     builder: (context) => const HomeScreen(),
+                    //   ),
+                    // );
                   },
                   buttonColor: Colors.white,
                 ),
